@@ -8,11 +8,23 @@ import Step4 from './Step4';
 export class MainForm extends Component {
   state = {
     step: 1,
-    firstName: '',
-    lastName: '',
-    email: '',
-    cardNumber: '',
-    street: ''
+    subscriptionParams: {
+      duration: 12,
+      amountGigas: 5,
+      payment: 'no'
+    },
+    userData: {
+      lName: '',
+      fName: '',
+      email: '',
+      streetAddress: ''
+    },
+    cardData: {
+      cardNumber: '',
+      cardExpDate: '',
+      cardSecCode: ''
+    },
+    termsAgreement: false
   };
 
   // Next Step
@@ -32,20 +44,53 @@ export class MainForm extends Component {
   };
 
   // Field Change
+  // handleChange = e => {
+  //   const { name, value } = e.target;
+  //   this.setState({ [name]: value });
+  // };
   handleChange = e => {
     const { name, value } = e.target;
-    this.setState({ [name]: value });
+    const {
+      subscriptionParams,
+      userData,
+      cardData,
+      termsAgreement
+    } = this.state;
+    this.setState({
+      subscriptionParams: {
+        ...subscriptionParams,
+        [name]: value
+      },
+      userData: {
+        ...userData,
+        [name]: value
+      },
+      cardData: {
+        ...cardData,
+        [name]: value
+      },
+      termsAgreement
+    });
   };
 
   render() {
     const { step } = this.state;
-    const { firstName, lastName, email, cardNumber, street } = this.state;
+    const { termsAgreement } = this.state;
+    const { duration, amountGigas, payment } = this.state.subscriptionParams;
+    const { lName, fName, email, streetAddress } = this.state.userData;
+    const { cardNumber, cardExpDate, cardSecCode } = this.state.cardData;
     const values = {
-      firstName,
-      lastName,
+      duration,
+      amountGigas,
+      payment,
+      lName,
+      fName,
       email,
+      streetAddress,
       cardNumber,
-      street
+      cardExpDate,
+      cardSecCode,
+      termsAgreement
     };
 
     switch (step) {
@@ -82,6 +127,7 @@ export class MainForm extends Component {
             nextStep={this.nextStep}
             handleChange={this.handleChange}
             values={values}
+            checked={termsAgreement}
           />
         );
       default:

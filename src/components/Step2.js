@@ -17,21 +17,46 @@ export class SubscriptionForm extends Component {
     return (
       <Fragment>
         <h3>Step Two</h3>
-        <label htmlFor='email'>email</label>
-        <input
-          name='email'
-          type='text'
-          placeholder='email'
-          value={values.email}
-          onChange={handleChange}
-        />
-        <input
-          name='street'
-          type='text'
-          placeholder='Street'
-          value={values.street}
-          onChange={handleChange}
-        />
+        <div>
+          <label htmlFor='lName'>Last Name</label>
+          <input
+            name='lName'
+            type='text'
+            placeholder='Last Name'
+            value={values.lName}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label htmlFor='fName'>First Name</label>
+          <input
+            name='fName'
+            type='text'
+            placeholder='First Name'
+            value={values.fName}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label htmlFor='email'>Email</label>
+          <input
+            name='email'
+            type='email'
+            placeholder='email'
+            value={values.email}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label htmlFor='streetAddress'>Street Address</label>
+          <input
+            name='streetAddress'
+            type='text'
+            placeholder='street address'
+            value={values.streetAddress}
+            onChange={handleChange}
+          />
+        </div>
         <button type='button' onClick={prevStep}>
           Prev
         </button>

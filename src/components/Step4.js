@@ -12,9 +12,9 @@ export class Step4 extends Component {
   };
 
   render() {
+    const { handleChange, prevStep } = this.props;
     const {
-      values: { firstName, lastName, email, street, cardNumber },
-      prevStep
+      values: { firstName, lastName, email, street, cardNumber, termsAgreement }
     } = this.props;
 
     return (
@@ -27,6 +27,14 @@ export class Step4 extends Component {
           <li>Street: {street} </li>
           <li>Card Number {cardNumber} </li>
         </ul>
+        <div>
+          <label htmlFor='termsAgreement'>I accept the agreement</label>
+          <input
+            type='checkbox'
+            checked={termsAgreement}
+            onChange={handleChange}
+          />
+        </div>
         <button type='button' onClick={prevStep}>
           Prev
         </button>
