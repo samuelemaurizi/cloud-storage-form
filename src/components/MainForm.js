@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
-import Step1 from './Step1';
-import Step2 from './Step2';
-import Step3 from './Step3';
-import Step4 from './Step4';
+import SubscriptionForm from './SubscriptionForm';
+import UserForm from './UserForm';
+import CardForm from './CardForm';
+import Confirmation from './Confirmation';
 
 export class MainForm extends Component {
   state = {
@@ -24,7 +25,7 @@ export class MainForm extends Component {
       cardExpDate: '',
       cardSecCode: ''
     },
-    termsAgreement: false
+    acceptedAgreement: false
   };
 
   // Next Step
@@ -49,13 +50,9 @@ export class MainForm extends Component {
   //   this.setState({ [name]: value });
   // };
   handleChange = e => {
+    const acceptedAgreement = e.target.checked;
     const { name, value } = e.target;
-    const {
-      subscriptionParams,
-      userData,
-      cardData,
-      termsAgreement
-    } = this.state;
+    const { subscriptionParams, userData, cardData } = this.state;
     this.setState({
       subscriptionParams: {
         ...subscriptionParams,
@@ -69,13 +66,47 @@ export class MainForm extends Component {
         ...cardData,
         [name]: value
       },
-      termsAgreement
+      acceptedAgreement
     });
+  };
+
+  // On Submit
+  handleSubmit = e => {
+    e.preventDefault();
+    console.log('Submitted!');
+    const {
+      duration,
+      amountGigas,
+      payment,
+      lName,
+      fName,
+      email,
+      streetAddress,
+      cardNumber,
+      cardExpDate,
+      cardSecCode
+    } = this.state.subscriptionParams;
+
+    axios
+      .post('http://httpbin.org/post', {
+        duration,
+        amountGigas,
+        payment,
+        lName,
+        fName,
+        email,
+        streetAddress,
+        cardNumber,
+        cardExpDate,
+        cardSecCode
+      })
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
   };
 
   render() {
     const { step } = this.state;
-    const { termsAgreement } = this.state;
+    const { acceptedAgreement } = this.state;
     const { duration, amountGigas, payment } = this.state.subscriptionParams;
     const { lName, fName, email, streetAddress } = this.state.userData;
     const { cardNumber, cardExpDate, cardSecCode } = this.state.cardData;
@@ -90,13 +121,13 @@ export class MainForm extends Component {
       cardNumber,
       cardExpDate,
       cardSecCode,
-      termsAgreement
+      acceptedAgreement
     };
 
     switch (step) {
       case 1:
         return (
-          <Step1
+          <SubscriptionForm
             nextStep={this.nextStep}
             handleChange={this.handleChange}
             values={values}
@@ -104,7 +135,7 @@ export class MainForm extends Component {
         );
       case 2:
         return (
-          <Step2
+          <UserForm
             prevStep={this.prevStep}
             nextStep={this.nextStep}
             handleChange={this.handleChange}
@@ -113,7 +144,7 @@ export class MainForm extends Component {
         );
       case 3:
         return (
-          <Step3
+          <CardForm
             prevStep={this.prevStep}
             nextStep={this.nextStep}
             handleChange={this.handleChange}
@@ -122,12 +153,13 @@ export class MainForm extends Component {
         );
       case 4:
         return (
-          <Step4
+          <Confirmation
             prevStep={this.prevStep}
             nextStep={this.nextStep}
             handleChange={this.handleChange}
             values={values}
-            checked={termsAgreement}
+            checked={acceptedAgreement}
+            handleSubmit={this.handleSubmit}
           />
         );
       default:
