@@ -1,4 +1,5 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
+import { Container, Form, Button } from 'react-bootstrap';
 
 export class CardForm extends Component {
   continue = e => {
@@ -15,47 +16,47 @@ export class CardForm extends Component {
     const { values, handleChange, nextStep, prevStep } = this.props;
 
     return (
-      <Fragment>
-        <h3>Step Three</h3>
-        <form>
-          <div>
+      <Container>
+        <Form>
+          <h3>Credit Card Data</h3>
+          <Form.Group>
             <label htmlFor='cardNumber'>Card Number</label>
-            <input
+            <Form.Control
               name='cardNumber'
               type='number'
               placeholder='Card Number'
               value={values.cardNumber}
               onChange={handleChange}
             />
-          </div>
-          <div>
+          </Form.Group>
+          <Form.Group>
             <label htmlFor='cardExpDate'>Card Expiration Date</label>
-            <input
+            <Form.Control
               name='cardExpDate'
               type='date'
               placeholder='dd/mm/yyyy'
               value={values.cardExpDate}
               onChange={handleChange}
             />
-          </div>
-          <div>
+          </Form.Group>
+          <Form.Group>
             <label htmlFor='cardSecCode'>Card Security</label>
-            <input
+            <Form.Control
               name='cardSecCode'
               type='number'
               placeholder='CVV'
               value={values.cardSecCode}
               onChange={handleChange}
             />
-          </div>
-          <button type='button' onClick={prevStep}>
+          </Form.Group>
+          <Button variant='light' type='button' onClick={prevStep}>
             Back
-          </button>
-          <button type='button' onClick={nextStep}>
+          </Button>
+          <Button variant='primary' type='button' onClick={nextStep}>
             Next
-          </button>
-        </form>
-      </Fragment>
+          </Button>
+        </Form>
+      </Container>
     );
   }
 }

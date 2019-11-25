@@ -1,4 +1,5 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
+import { Container, Form, Button } from 'react-bootstrap';
 
 export class UserForm extends Component {
   continue = e => {
@@ -15,57 +16,57 @@ export class UserForm extends Component {
     const { values, handleChange, nextStep, prevStep } = this.props;
 
     return (
-      <Fragment>
-        <h3>Step Two</h3>
-        <form>
-          <div>
+      <Container>
+        <Form>
+          <h3>User Data</h3>
+          <Form.Group>
             <label htmlFor='lName'>Last Name</label>
-            <input
+            <Form.Control
               name='lName'
               type='text'
               placeholder='Last Name'
               value={values.lName}
               onChange={handleChange}
             />
-          </div>
-          <div>
+          </Form.Group>
+          <Form.Group>
             <label htmlFor='fName'>First Name</label>
-            <input
+            <Form.Control
               name='fName'
               type='text'
               placeholder='First Name'
               value={values.fName}
               onChange={handleChange}
             />
-          </div>
-          <div>
+          </Form.Group>
+          <Form.Group>
             <label htmlFor='email'>Email</label>
-            <input
+            <Form.Control
               name='email'
               type='email'
               placeholder='email'
               value={values.email}
               onChange={handleChange}
             />
-          </div>
-          <div>
+          </Form.Group>
+          <Form.Group>
             <label htmlFor='streetAddress'>Street Address</label>
-            <input
+            <Form.Control
               name='streetAddress'
               type='text'
               placeholder='street address'
               value={values.streetAddress}
               onChange={handleChange}
             />
-          </div>
-          <button type='button' onClick={prevStep}>
+          </Form.Group>
+          <Button variant='light' type='button' onClick={prevStep}>
             Back
-          </button>
-          <button type='button' onClick={nextStep}>
+          </Button>
+          <Button variant='primary' type='button' onClick={nextStep}>
             Next
-          </button>
-        </form>
-      </Fragment>
+          </Button>
+        </Form>
+      </Container>
     );
   }
 }

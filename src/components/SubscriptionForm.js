@@ -1,4 +1,5 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
+import { Container, Form, Button } from 'react-bootstrap';
 
 export class SubscriptionForm extends Component {
   continue = e => {
@@ -10,12 +11,13 @@ export class SubscriptionForm extends Component {
     const { values, handleChange, nextStep } = this.props;
 
     return (
-      <Fragment>
-        <h3>Step One</h3>
-        <form>
-          <div className='input-field'>
-            <label>Duration</label>
+      <Container>
+        <Form>
+          <h3>Select subscription parameters</h3>
+          <Form.Group>
+            <Form.Label>Duration</Form.Label>
             <select
+              className='custom-select'
               name='duration'
               value={values.duration}
               onChange={handleChange}
@@ -24,10 +26,11 @@ export class SubscriptionForm extends Component {
               <option value='6'>6</option>
               <option value='12'>12</option>
             </select>
-          </div>
-          <div>
-            <label>Gigabytes</label>
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Gigabytes</Form.Label>
             <select
+              className='custom-select'
               name='amountGigas'
               value={values.amountGigas}
               onChange={handleChange}
@@ -39,10 +42,11 @@ export class SubscriptionForm extends Component {
               <option value='30'>30</option>
               <option value='50'>50</option>
             </select>
-          </div>
-          <div>
-            <label>Upfront Payment</label>
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Upfront Payment</Form.Label>
             <select
+              className='custom-select'
               name='payment'
               value={values.payment}
               onChange={handleChange}
@@ -50,16 +54,18 @@ export class SubscriptionForm extends Component {
               <option value='no'>No</option>
               <option value='yes'>Yes</option>
             </select>
-          </div>
-          <button
-            className='waves-effect waves-light btn'
+          </Form.Group>
+
+          <Button
+            variant='primary'
+            className='mt-4'
             type='button'
             onClick={nextStep}
           >
             Next
-          </button>
-        </form>
-      </Fragment>
+          </Button>
+        </Form>
+      </Container>
     );
   }
 }
