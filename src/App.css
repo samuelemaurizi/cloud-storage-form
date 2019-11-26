@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .App {
   display: flex;
   flex-direction: column;
@@ -7,15 +13,35 @@
 }
 
 form {
-  width: 70%;
+  max-width: 70%;
   margin: 0 auto;
-  padding: 3rem;
+  padding: 2rem 3rem;
   background: #fff;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
 }
 
-h3 {
-  text-align: center;
-  margin-bottom: 2rem;
-  color: #333;
+.form__container-subsciption {
+  display: flex;
+  justify-content: space-around;
+  margin: 2rem 0;
+}
+
+.form__container-userdata {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 0;
+}
+
+.form__container-userdata .text-field {
+  margin: 1rem 0;
+}
+
+.form__btns {
+  display: flex;
+  justify-content: space-between;
+}
+
+p {
+  color: red;
 }

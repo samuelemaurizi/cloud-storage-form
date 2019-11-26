@@ -1,4 +1,11 @@
 import React, { Component, Fragment } from 'react';
+import {
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+  Button
+} from '@material-ui/core';
 
 export class SubscriptionForm extends Component {
   continue = e => {
@@ -11,58 +18,57 @@ export class SubscriptionForm extends Component {
 
     return (
       <Fragment>
-        <form>
-          <h3>Select subscription parameters</h3>
-          <div>
-            <label>Duration</label>
-            <select
-              className='custom-select'
-              name='duration'
-              value={values.duration}
-              onChange={handleChange}
-            >
-              <option value='3'>3</option>
-              <option value='6'>6</option>
-              <option value='12'>12</option>
-            </select>
-          </div>
-          <div>
-            <label>Gigabytes</label>
-            <select
-              className='custom-select'
-              name='amountGigas'
-              value={values.amountGigas}
-              onChange={handleChange}
-            >
-              <option value='3'>3</option>
-              <option value='5'>5</option>
-              <option value='10'>10</option>
-              <option value='20'>20</option>
-              <option value='30'>30</option>
-              <option value='50'>50</option>
-            </select>
-          </div>
-          <div>
-            <label>Upfront Payment</label>
-            <select
-              className='custom-select'
-              name='payment'
-              value={values.payment}
-              onChange={handleChange}
-            >
-              <option value='no'>No</option>
-              <option value='yes'>Yes</option>
-            </select>
+        <form noValidate>
+          <h2>Select subscription parameters</h2>
+          <div className='form__container-subsciption'>
+            <FormControl>
+              <InputLabel>Duration</InputLabel>
+              <Select
+                name='duration'
+                value={values.duration}
+                onChange={handleChange}
+              >
+                <MenuItem value='3'>3</MenuItem>
+                <MenuItem value='6'>6</MenuItem>
+                <MenuItem value='12'>12</MenuItem>
+              </Select>
+            </FormControl>
+            <FormControl>
+              <InputLabel>Gigabytes</InputLabel>
+              <Select
+                name='amountGigas'
+                value={values.amountGigas}
+                onChange={handleChange}
+              >
+                <MenuItem value='3'>3</MenuItem>
+                <MenuItem value='5'>5</MenuItem>
+                <MenuItem value='10'>10</MenuItem>
+                <MenuItem value='20'>20</MenuItem>
+                <MenuItem value='30'>30</MenuItem>
+                <MenuItem value='50'>50</MenuItem>
+              </Select>
+            </FormControl>
+            <FormControl>
+              <InputLabel>Prepayment</InputLabel>
+              <Select
+                name='payment'
+                value={values.payment}
+                onChange={handleChange}
+              >
+                <MenuItem value='no'>No</MenuItem>
+                <MenuItem value='yes'>Yes</MenuItem>
+              </Select>
+            </FormControl>
           </div>
 
-          <button
-            variant='primary'
-            className='mt-4'
+          <Button
+            variant='contained'
+            color='primary'
             type='button'
             onClick={nextStep}
           >
             Next
-          </button>
+          </Button>
         </form>
       </Fragment>
     );

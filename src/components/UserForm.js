@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { TextField, Button } from '@material-ui/core';
 
 export class UserForm extends Component {
   continue = e => {
@@ -16,66 +17,81 @@ export class UserForm extends Component {
 
     return (
       <Fragment>
-        <form>
-          <h3>User Data</h3>
-          <div>
-            <label htmlFor='lName'>Last Name</label>
-            <input
-              name='lName'
-              type='text'
-              placeholder='Last Name'
-              value={values.lName}
-              onChange={handleChange}
-            />
-            <span>
-              <small>{values.lNameError}</small>
-            </span>
+        <form noValidate>
+          <h2>User Data</h2>
+          <div className='form__container-userdata'>
+            <div className='text-field'>
+              <TextField
+                id='standard-basic'
+                label='Last Name'
+                name='lName'
+                type='text'
+                value={values.lName}
+                onChange={handleChange}
+              />
+              <p>
+                <small>{values.lNameError}</small>
+              </p>
+            </div>
+            <div className='text-field'>
+              <TextField
+                id='standard-basic'
+                label='First Name'
+                name='fName'
+                type='text'
+                value={values.fName}
+                onChange={handleChange}
+              />
+              <p>
+                <small>{values.fNameError}</small>
+              </p>
+            </div>
+            <div className='text-field'>
+              <TextField
+                id='standard-basic'
+                label='Email Name'
+                name='email'
+                type='email'
+                value={values.email}
+                onChange={handleChange}
+              />
+              <p>
+                <small>{values.emailError}</small>
+              </p>
+            </div>
+            <div className='text-field'>
+              <TextField
+                id='standard-basic'
+                label='Street Address'
+                name='streetAddress'
+                type='text'
+                placeholder='street address'
+                value={values.streetAddress}
+                onChange={handleChange}
+              />
+              <p>
+                <small>{values.streetAddressError}</small>
+              </p>
+            </div>
           </div>
-          <div>
-            <label htmlFor='fName'>First Name</label>
-            <input
-              name='fName'
-              type='text'
-              placeholder='First Name'
-              value={values.fName}
-              onChange={handleChange}
-            />
-            <span>
-              <small>{values.fNameError}</small>
-            </span>
+          <div className='form__btns'>
+            <Button
+              variant='contained'
+              color='light'
+              type='button'
+              onClick={prevStep}
+            >
+              Back
+            </Button>
+            <Button
+              variant='contained'
+              color='primary'
+              type='button'
+              onClick={nextStep}
+            >
+              Next
+            </Button>
           </div>
-          <div>
-            <label htmlFor='email'>Email</label>
-            <input
-              name='email'
-              type='email'
-              placeholder='email'
-              value={values.email}
-              onChange={handleChange}
-            />
-            <span>
-              <small>{values.emailError}</small>
-            </span>
-          </div>
-          <div>
-            <label htmlFor='streetAddress'>Street Address</label>
-            <input
-              name='streetAddress'
-              type='text'
-              placeholder='street address'
-              value={values.streetAddress}
-              onChange={handleChange}
-            />
-            <span>
-              <small>{values.streetAddressError}</small>
-            </span>
-          </div>
-          <button variant='light' type='button' onClick={prevStep}>
-            Back
-          </button>
-          <button variant='primary' type='button' onClick={nextStep}>
-            Next
-          </button>
         </form>
       </Fragment>
     );
