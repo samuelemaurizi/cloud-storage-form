@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import { Container, Form, Button } from 'react-bootstrap';
+import React, { Component, Fragment } from 'react';
 
 export class UserForm extends Component {
   continue = e => {
@@ -16,57 +15,69 @@ export class UserForm extends Component {
     const { values, handleChange, nextStep, prevStep } = this.props;
 
     return (
-      <Container>
-        <Form>
+      <Fragment>
+        <form>
           <h3>User Data</h3>
-          <Form.Group>
+          <div>
             <label htmlFor='lName'>Last Name</label>
-            <Form.Control
+            <input
               name='lName'
               type='text'
               placeholder='Last Name'
               value={values.lName}
               onChange={handleChange}
             />
-          </Form.Group>
-          <Form.Group>
+            <span>
+              <small>{values.lNameError}</small>
+            </span>
+          </div>
+          <div>
             <label htmlFor='fName'>First Name</label>
-            <Form.Control
+            <input
               name='fName'
               type='text'
               placeholder='First Name'
               value={values.fName}
               onChange={handleChange}
             />
-          </Form.Group>
-          <Form.Group>
+            <span>
+              <small>{values.fNameError}</small>
+            </span>
+          </div>
+          <div>
             <label htmlFor='email'>Email</label>
-            <Form.Control
+            <input
               name='email'
               type='email'
               placeholder='email'
               value={values.email}
               onChange={handleChange}
             />
-          </Form.Group>
-          <Form.Group>
+            <span>
+              <small>{values.emailError}</small>
+            </span>
+          </div>
+          <div>
             <label htmlFor='streetAddress'>Street Address</label>
-            <Form.Control
+            <input
               name='streetAddress'
               type='text'
               placeholder='street address'
               value={values.streetAddress}
               onChange={handleChange}
             />
-          </Form.Group>
-          <Button variant='light' type='button' onClick={prevStep}>
+            <span>
+              <small>{values.streetAddressError}</small>
+            </span>
+          </div>
+          <button variant='light' type='button' onClick={prevStep}>
             Back
-          </Button>
-          <Button variant='primary' type='button' onClick={nextStep}>
+          </button>
+          <button variant='primary' type='button' onClick={nextStep}>
             Next
-          </Button>
-        </Form>
-      </Container>
+          </button>
+        </form>
+      </Fragment>
     );
   }
 }

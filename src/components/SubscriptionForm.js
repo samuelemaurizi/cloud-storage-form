@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import { Container, Form, Button } from 'react-bootstrap';
+import React, { Component, Fragment } from 'react';
 
 export class SubscriptionForm extends Component {
   continue = e => {
@@ -11,11 +10,11 @@ export class SubscriptionForm extends Component {
     const { values, handleChange, nextStep } = this.props;
 
     return (
-      <Container>
-        <Form>
+      <Fragment>
+        <form>
           <h3>Select subscription parameters</h3>
-          <Form.Group>
-            <Form.Label>Duration</Form.Label>
+          <div>
+            <label>Duration</label>
             <select
               className='custom-select'
               name='duration'
@@ -26,9 +25,9 @@ export class SubscriptionForm extends Component {
               <option value='6'>6</option>
               <option value='12'>12</option>
             </select>
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Gigabytes</Form.Label>
+          </div>
+          <div>
+            <label>Gigabytes</label>
             <select
               className='custom-select'
               name='amountGigas'
@@ -42,9 +41,9 @@ export class SubscriptionForm extends Component {
               <option value='30'>30</option>
               <option value='50'>50</option>
             </select>
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Upfront Payment</Form.Label>
+          </div>
+          <div>
+            <label>Upfront Payment</label>
             <select
               className='custom-select'
               name='payment'
@@ -54,18 +53,18 @@ export class SubscriptionForm extends Component {
               <option value='no'>No</option>
               <option value='yes'>Yes</option>
             </select>
-          </Form.Group>
+          </div>
 
-          <Button
+          <button
             variant='primary'
             className='mt-4'
             type='button'
             onClick={nextStep}
           >
             Next
-          </Button>
-        </Form>
-      </Container>
+          </button>
+        </form>
+      </Fragment>
     );
   }
 }

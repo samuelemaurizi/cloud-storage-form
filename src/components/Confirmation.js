@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import { Container, Form, Button } from 'react-bootstrap';
+import React, { Component, Fragment } from 'react';
 
 export class Confirmation extends Component {
   continue = e => {
@@ -40,7 +39,7 @@ export class Confirmation extends Component {
     } = this.props;
 
     return (
-      <Container>
+      <Fragment>
         <h3>Confirmation</h3>
         <ul>
           <li>Duration: {duration} </li>
@@ -55,7 +54,7 @@ export class Confirmation extends Component {
           <li>Upfront payment: {payment} </li>
           <li>Total: {this.total(duration, 2)} $</li>
         </ul>
-        <Form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <div>
             <label>
               To continue, you must agree to the CloudStorage Terms of Service
@@ -68,14 +67,14 @@ export class Confirmation extends Component {
               onChange={handleChange}
             />
           </div>
-          <Button variant='light' type='button' onClick={prevStep}>
+          <button variant='light' type='button' onClick={prevStep}>
             Back
-          </Button>
-          <Button variant='primary' type='submit' disabled={!acceptedAgreement}>
+          </button>
+          <button variant='primary' type='submit' disabled={!acceptedAgreement}>
             Send
-          </Button>
-        </Form>
-      </Container>
+          </button>
+        </form>
+      </Fragment>
     );
   }
 }

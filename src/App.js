@@ -1,6 +1,5 @@
 import React from 'react';
 import MainForm from './components/MainForm';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 function App() {

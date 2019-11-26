@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import { Container, Form, Button } from 'react-bootstrap';
+import React, { Component, Fragment } from 'react';
 
 export class CardForm extends Component {
   continue = e => {
@@ -16,47 +15,56 @@ export class CardForm extends Component {
     const { values, handleChange, nextStep, prevStep } = this.props;
 
     return (
-      <Container>
-        <Form>
+      <Fragment>
+        <form>
           <h3>Credit Card Data</h3>
-          <Form.Group>
+          <div>
             <label htmlFor='cardNumber'>Card Number</label>
-            <Form.Control
+            <input
               name='cardNumber'
               type='number'
               placeholder='Card Number'
               value={values.cardNumber}
               onChange={handleChange}
             />
-          </Form.Group>
-          <Form.Group>
+            <span>
+              <small>{values.cardNumberError}</small>
+            </span>
+          </div>
+          <div>
             <label htmlFor='cardExpDate'>Card Expiration Date</label>
-            <Form.Control
+            <input
               name='cardExpDate'
               type='date'
               placeholder='dd/mm/yyyy'
               value={values.cardExpDate}
               onChange={handleChange}
             />
-          </Form.Group>
-          <Form.Group>
+            <span>
+              <small>{values.cardExpDateError}</small>
+            </span>
+          </div>
+          <div>
             <label htmlFor='cardSecCode'>Card Security</label>
-            <Form.Control
+            <input
               name='cardSecCode'
               type='number'
               placeholder='CVV'
               value={values.cardSecCode}
               onChange={handleChange}
             />
-          </Form.Group>
-          <Button variant='light' type='button' onClick={prevStep}>
+            <span>
+              <small>{values.cardSecCodeError}</small>
+            </span>
+          </div>
+          <button variant='light' type='button' onClick={prevStep}>
             Back
-          </Button>
-          <Button variant='primary' type='button' onClick={nextStep}>
+          </button>
+          <button variant='primary' type='button' onClick={nextStep}>
             Next
-          </Button>
-        </Form>
-      </Container>
+          </button>
+        </form>
+      </Fragment>
     );
   }
 }
