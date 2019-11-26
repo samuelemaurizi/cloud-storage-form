@@ -18,7 +18,7 @@ export class SubscriptionForm extends Component {
 
     return (
       <Fragment>
-        <form noValidate>
+        <form className='form__container' noValidate>
           <h2>Select subscription parameters</h2>
           <div className='form__container-subsciption'>
             <FormControl>
@@ -60,6 +60,9 @@ export class SubscriptionForm extends Component {
               </Select>
             </FormControl>
           </div>
+          <p className='txt-discount'>
+            <small>Get a 10% discount when paying upfront</small>
+          </p>
 
           <Button
             variant='contained'

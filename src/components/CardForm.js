@@ -1,10 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import { TextField, Button } from '@material-ui/core';
-import {
-  MuiPickersUtilsProvider,
-  KeyboardDatePicker
-} from '@material-ui/pickers';
-import DateFnsUtils from '@date-io/date-fns';
 
 export class CardForm extends Component {
   continue = e => {
@@ -22,8 +17,8 @@ export class CardForm extends Component {
 
     return (
       <Fragment>
-        <form noValidate>
-          <h3>Credit Card Data</h3>
+        <form className='form__container' noValidate>
+          <h2>Credit Card Data</h2>
           <div className='form__container-userdata'>
             <div className='text-field'>
               <TextField
@@ -40,17 +35,16 @@ export class CardForm extends Component {
             </div>
             <div className='text-field'>
               <TextField
-                id='date-picker-inline'
-                label='Card Expiration'
+                id='date'
+                label='Card Expires'
                 name='cardExpDate'
                 type='date'
                 value={values.cardExpDate}
                 onChange={handleChange}
-                KeyboardButtonProps={{
-                  'aria-label': 'change date'
+                InputLabelProps={{
+                  shrink: true
                 }}
               />
-
               <p>
                 <small>{values.cardExpDateError}</small>
               </p>
@@ -70,12 +64,7 @@ export class CardForm extends Component {
             </div>
           </div>
           <div className='form__btns'>
-            <Button
-              variant='contained'
-              color='light'
-              type='button'
-              onClick={prevStep}
-            >
+            <Button variant='contained' type='button' onClick={prevStep}>
               Back
             </Button>
             <Button

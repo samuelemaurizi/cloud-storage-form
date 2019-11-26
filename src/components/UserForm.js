@@ -17,7 +17,7 @@ export class UserForm extends Component {
 
     return (
       <Fragment>
-        <form noValidate>
+        <form className='form__container' noValidate>
           <h2>User Data</h2>
           <div className='form__container-userdata'>
             <div className='text-field'>
@@ -75,12 +75,7 @@ export class UserForm extends Component {
             </div>
           </div>
           <div className='form__btns'>
-            <Button
-              variant='contained'
-              color='light'
-              type='button'
-              onClick={prevStep}
-            >
+            <Button variant='contained' type='button' onClick={prevStep}>
               Back
             </Button>
             <Button

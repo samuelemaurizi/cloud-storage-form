@@ -5,7 +5,7 @@ const ErrorPage = () => {
 
   return (
     <div>
-      <h1>Something went wrong :(</h1>
+      <h1 className='card__success'>Something went wrong :(</h1>
       <button variant='light' type='button' onClick={prevStep}>
         Back
       </button>

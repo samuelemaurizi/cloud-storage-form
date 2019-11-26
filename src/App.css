@@ -4,6 +4,20 @@
   box-sizing: border-box;
 }
 
+h1 {
+  color: #333;
+  font-size: 3rem;
+}
+
+h2 {
+  text-align: center;
+  color: #303f9f;
+}
+
+p {
+  color: red;
+}
+
 .App {
   display: flex;
   flex-direction: column;
@@ -12,7 +26,7 @@
   background: #dbdbdb;
 }
 
-form {
+.form__container {
   max-width: 70%;
   margin: 0 auto;
   padding: 2rem 3rem;
@@ -24,7 +38,7 @@ form {
 .form__container-subsciption {
   display: flex;
   justify-content: space-around;
-  margin: 2rem 0;
+  margin: 2rem 0 1rem;
 }
 
 .form__container-userdata {
@@ -40,8 +54,57 @@ form {
 .form__btns {
   display: flex;
   justify-content: space-between;
+  margin-top: 2rem;
 }
 
-p {
-  color: red;
+.card {
+  max-width: 70%;
+  margin: auto;
+  padding: 2rem 3rem;
+  background: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+}
+
+.card__success {
+  width: 70%;
+  padding: 4rem;
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  text-align: center;
+  background: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+}
+
+.card__success img {
+  margin: auto;
+  width: '200px';
+  height: '72px';
+}
+
+.card__list-container {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.card__list {
+  margin-top: 2rem;
+  list-style: none;
+}
+
+.card__list li {
+  line-height: 1.7;
+  font-weight: 600;
+}
+
+.terms {
+  margin-bottom: 2rem;
+}
+
+.txt-discount {
+  color: #333;
+  margin-bottom: 1rem;
+  text-align: center;
 }
